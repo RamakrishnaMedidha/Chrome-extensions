@@ -13,18 +13,18 @@
 	
 	function buttonElement() {
 		var btn=document.createElement('button');
-		btn.innerText="Show popup";
+		btn.innerText="Show popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popupShow popup";
 		
 		btn.addEventListener('click',function(event){
+			$("#really-change.ui-dialog-titlebar-close").hide();
 			dialog.dialog('open');
-			$.ajax({
+			/*$.ajax({
 			  url: "https://reqres.in/api/users?page=2",
 			  context: document.body
 			}).success(function({data}) {
 			  //innerDiv.innerHTML = data.map(e => `<li>${e['first_name']}</li>`).join('');
-			});
-						
-			
+			});*/
+							
 		},false);
 		return btn;
 	}
@@ -36,13 +36,13 @@
 		innerDiv.setAttribute("id", "dialog");
 		var input=document.createElement('input');
 		var label=document.createElement("label");
-		label.innerText="User Name";
+		label.innerText="User Name :";
 		input.setAttribute('id','userName');
 		innerDiv.appendChild(label);
 		innerDiv.appendChild(input);
-		var p = document.createElement('p');
-		p.innerText = 'lorem ipsum HEllo world';
-		innerDiv.appendChild(p);
+		/*var p = document.createElement('p');
+		p.innerText = 'Enter UserName :';
+		innerDiv.appendChild(p);*/
 		return innerDiv;
 		
 	}
@@ -50,11 +50,11 @@
 	function initializeDialog() {
 		dialog = $( "#dialog" ).dialog({
 		  autoOpen: false,
-		  height: 400,
+		  height: 200,
 		  width: 350,
 		  modal: true,
 		  buttons: {
-			"Create an account": addUser,
+			Submit: addUser,
 			Cancel: function() {
           dialog.dialog( "close" );
         }
@@ -63,7 +63,9 @@
 }
 
 	function addUser(){
-		var name=$("#userName").text();
+		var name=$("#userName").val();
+		
+		if(name){
 		$.ajax({
 		method: "POST",
 		url: "https://reqres.in/api/users",
@@ -72,7 +74,10 @@
 		.success(function( msg ) {
 		alert( "Data Saved: ");
 		});	
-}
+	    }else{
+		alert("Please enter your name");
+		}
+	}
 })($);
 
 

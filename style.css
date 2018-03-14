@@ -1,3 +1,19 @@
-#extensionDiv {
-	background-color:"red"  !important;
+
+
+.extensionDiv {
+    /* float: right; */
+    position: fixed !important;
+    bottom:0% !important;
+    right: 0px !important;
+    /*height: 120px;
+     width: 500px; 
+    line-height: 60px;*/
+}
+
+.extensionDiv > *{
+	height:60px !important;
+	background-color:#0095ff !important;
+	color: #FFF !important;
+    border: 1px solid #07c !important;
+	
 }
